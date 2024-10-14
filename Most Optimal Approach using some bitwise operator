@@ -1,0 +1,17 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        //your code goes here
+         int one = 0;
+        int two = 0;
+        
+        // Iterate over all numbers in the array
+        for (int i = 0; i < nums.length; i++) {
+            // Update 'one' and 'two' based on current number
+            one = (nums[i] ^ one) & ~two;
+            two = (nums[i] ^ two) & ~one;
+        }
+        
+        // 'one' will hold the number that appeared exactly once
+        return one;
+    }
+}
