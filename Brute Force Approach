@@ -1,0 +1,21 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        //your code goes here
+         HashMap<Integer, Integer> mpp = new HashMap<>();
+        
+        // First loop: populate the HashMap with number frequencies
+        for (int num : nums) {
+            mpp.put(num, mpp.getOrDefault(num, 0) + 1);
+        }
+        
+        // Second loop: find and return the number with frequency 1
+        for (int key : mpp.keySet()) {
+            if (mpp.get(key) == 1) {
+                return key;
+            }
+        }
+        
+        // Return -1 if no single occurrence is found (unlikely in this problem)
+        return -1;
+    }
+}
